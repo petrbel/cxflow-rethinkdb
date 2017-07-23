@@ -30,35 +30,38 @@ references:
   
 jobs:
             
-#  test_ubuntu16.04:
-#    docker:
-#      - image: ubuntu:16.04
-#    working_directory: ~/cxflow-rethinkdb
-#    steps:
-#      - *ubuntu_deps
-#      - checkout
-#      - *install
-#      - *test
-#
-#  test_ubuntu16.10:
-#    docker:
-#      - image: ubuntu:16.10
-#    working_directory: ~/cxflow-rethinkdb
-#    steps:
-#      - *ubuntu_deps
-#      - checkout
-#      - *install
-#      - *test
-#
-#  test_ubuntu17.04:
-#    docker:
-#      - image: ubuntu:17.04
-#    working_directory: ~/cxflow-rethinkdb
-#    steps:
-#      - *ubuntu_deps
-#      - checkout
-#      - *install
-#      - *test
+  test_ubuntu16.04:
+    docker:
+      - image: ubuntu:16.04
+      - image: rethinkdb
+    working_directory: ~/cxflow-rethinkdb
+    steps:
+      - *ubuntu_deps
+      - checkout
+      - *install
+      - *test
+
+  test_ubuntu16.10:
+    docker:
+      - image: ubuntu:16.10
+      - image: rethinkdb
+    working_directory: ~/cxflow-rethinkdb
+    steps:
+      - *ubuntu_deps
+      - checkout
+      - *install
+      - *test
+
+  test_ubuntu17.04:
+    docker:
+      - image: ubuntu:17.04
+      - image: rethinkdb
+    working_directory: ~/cxflow-rethinkdb
+    steps:
+      - *ubuntu_deps
+      - checkout
+      - *install
+      - *test
 
   test_archlinux:
     docker:
