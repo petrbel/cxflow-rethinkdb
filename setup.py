@@ -2,7 +2,7 @@ from pip.req import parse_requirements
 from setuptools import setup
 
 setup(name='cxflow-rethinkdb',
-      version='0.1',
+      version='0.1.1',
       description='RethinkDB plugin for cxflow',
       long_description='Plugin providing RethinkDB support.',
       classifiers=[
