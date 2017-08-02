@@ -18,10 +18,10 @@ setup(name='cxflow-rethinkdb',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6'
       ],
-      keywords='tensorflow wrapper',
+      keywords='rethinkdb database cxflow',
       url='https://gitlab.com/Cognexa/cxflow-rethinkdb',
-      author='Petr Belohlavek',
-      author_email='me@petrbel.cz',
+      author='Cognexa Solutions s.r.o.',
+      author_email='info@cognexa.com',
       license='MIT',
       packages=[
           'cxflow_rethinkdb',
