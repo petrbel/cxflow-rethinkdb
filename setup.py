@@ -24,8 +24,7 @@ setup(name='cxflow-rethinkdb',
       author_email='info@cognexa.com',
       license='MIT',
       packages=[
-          'cxflow_rethinkdb',
-          'cxflow_rethinkdb.utils',
+          'cxflow_rethinkdb'
       ],
       include_package_data=True,
       zip_safe=False,
