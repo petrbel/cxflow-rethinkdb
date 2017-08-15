@@ -128,7 +128,8 @@ class RethinkDBHook(AbstractHook):
                     'epoch_id': epoch_id,
                     'epoch_data': RethinkDBHook._numpy_dict_to_jsonable_dict(epoch_data)}
 
-            response = r.table(self._table)\
+            response = r.db(self._db)\
+                        .table(self._table)\
                         .get(self._rethink_id)\
                         .update({'training': r.row['training'].append(item)})\
                         .run(conn)
