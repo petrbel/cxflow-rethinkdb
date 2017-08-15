@@ -25,9 +25,14 @@ setup(name='cxflow-rethinkdb',
       license='MIT',
       packages=[
           'cxflow_rethinkdb',
+          'cxflow_rethinkdb.utils',
       ],
       include_package_data=True,
       zip_safe=False,
       test_suite='cxflow_rethinkdb.tests',
       install_requires=[str(ir.req) for ir in parse_requirements('requirements.txt', session='hack')],
-     )
+      entry_points={
+          'console_scripts': [
+              'cx-rethinkdb=cxflow_rethinkdb.cli:main'
+          ]
+      })
