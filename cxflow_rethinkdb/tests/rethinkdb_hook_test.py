@@ -32,8 +32,7 @@ class RethinkDBHookTest(CXTestCaseWithDir):
             'host': HOST,
             'port': PORT,
             'user': USER,
-            'password': PASSWORD,
-            'db': DB
+            'password': PASSWORD
         }
 
         self._credentials_file = 'rethink_credentials.json'
@@ -63,7 +62,7 @@ class RethinkDBHookTest(CXTestCaseWithDir):
     def _create_hook(self, rethink_key_file):
         """Create the hook."""
         return RethinkDBHook(output_dir=self.tmpdir, credentials_file=path.join(self.tmpdir, self._credentials_file),
-                             table=TABLE, rethink_key_file=rethink_key_file)
+                             db=DB, table=TABLE, rethink_key_file=rethink_key_file)
 
     def test_id_file(self):
         """Test the document id is correctly dumped."""
