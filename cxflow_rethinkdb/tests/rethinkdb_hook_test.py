@@ -5,6 +5,7 @@ import rethinkdb as r
 
 from cxflow.tests.test_core import CXTestCaseWithDir
 from cxflow_rethinkdb import RethinkDBHook
+from cxflow_rethinkdb.utils import create_db, create_table, select_by_id
 
 HOST = 'localhost'
 PORT = 28015
@@ -41,9 +42,8 @@ class RethinkDBHookTest(CXTestCaseWithDir):
         """Save credentials and config to respective files and set up the database."""
         super().setUp()
 
-        with r.connect(**self._credentials) as conn:
-            r.db_create(DB).run(conn)
-            r.db(DB).table_create(TABLE).run(conn)
+        create_db(credentials=self._credentials, db_name=DB)
+        create_table(credentials=self._credentials, db_name=DB, table_name=TABLE)
 
         with open(path.join(self.tmpdir, self._credentials_file), 'w') as cred_f:
             json.dump(self._credentials, cred_f)
@@ -82,8 +82,7 @@ class RethinkDBHookTest(CXTestCaseWithDir):
         hook.after_epoch(epoch_id=0, epoch_data={'aa': [1,2,3,4], 'bb': [5,6,7,8]})
         hook.after_epoch(epoch_id=1, epoch_data={'aa': [9,0,1,2], 'bb': [3,4,5,6]})
 
-        with r.connect(**self._credentials) as conn:
-            document = r.db(DB).table(TABLE).get(hook._rethink_id).run(conn)
+        document = select_by_id(credentials=self._credentials, db_name=DB, table_name=TABLE, doc_id=hook._rethink_id)
 
         self.assertTrue('config' in document)
         self.assertTrue('timestamp' in document)
