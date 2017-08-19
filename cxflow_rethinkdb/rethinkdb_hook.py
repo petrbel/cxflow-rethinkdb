@@ -41,20 +41,20 @@ class RethinkDBHook(AbstractHook):
     -------------------------------------------------------
     Example usage in config
     -------------------------------------------------------
-     - class: RethinkDBHook
-       credentials_file: local_config/rethinkdb.json
-       table: example_table
+    - cxflow_rethinkdb.RethinkDBHook:
+        credentials_file: local/rethinkdb-credentials.json
+        db: my_database
+        table: my_table
     -------------------------------------------------------
        
     -------------------------------------------------------
-    Where `local_config/rethinkdb.json` is a text file containing:
+    Where `local_config/rethinkdb-credentials.json` is a text file containing:
     -------------------------------------------------------
     {
       "host": "database.url.com",
       "port": 28016,
       "user": "JohnWick",
-      "password": "SuperPassword123?",
-      "db": "example_db"
+      "password": "SuperPassword123?"
     }
     -------------------------------------------------------
 
