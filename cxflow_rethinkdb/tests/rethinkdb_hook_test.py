@@ -90,6 +90,7 @@ class RethinkDBHookTest(CXTestCaseWithDir):
         self.assertTrue('training' in document)
 
         self.assertEqual(document['id'], hook._rethink_id)
+        self.assertEqual(document['user'], USER)
         self.assertDictContainsSubset(CONFIG, document['config'])  # dont care about timestamp
         self.assertDictContainsSubset({'epoch_data': {'aa': [1,2,3,4], 'bb': [5,6,7,8]}, 'epoch_id': 0}, document['training'][0])
         self.assertDictContainsSubset({'epoch_data': {'aa': [9,0,1,2], 'bb': [3,4,5,6]}, 'epoch_id': 1}, document['training'][1])

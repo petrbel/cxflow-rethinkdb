@@ -84,7 +84,10 @@ class RethinkDBHook(AbstractHook):
 
         logging.debug('Creating training document in the db')
         response = insert(credentials=self._credentials, db_name=self._db, table_name=self._table,
-                          document={'config': config, 'training': [], 'timestamp': r.expr(datetime.now(pytz.utc))})
+                          document={'config': config,
+                                    'training': [],
+                                    'timestamp': r.expr(datetime.now(pytz.utc)),
+                                    'user': self._credentials['user']})
         if response['errors'] > 0:
             logging.error('Error: %s', response['errors'])
             return
